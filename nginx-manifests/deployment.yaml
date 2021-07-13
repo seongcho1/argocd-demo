@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-alpine
+  name: nginx-alpine
+  namespace: default 
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-alpine
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: nginx-alpine
+    spec:
+      containers:
+      - image: indivisi/nginx-alpine:v1.0.0 
+        imagePullPolicy: IfNotPresent
+        name: nginx-alpine
+        resources:
+          requests:
+            cpu: 50m
+            memory: 256Mi
