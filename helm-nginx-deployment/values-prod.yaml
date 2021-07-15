@@ -17,6 +17,6 @@ service:
   port: 80
   type: ClusterIP
 
-configMap:
+configmap:
   data: "version: 1.17.0"
   

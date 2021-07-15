@@ -17,6 +17,6 @@ service:
   port: 8111
   type: ClusterIP
 
-configMap:
+configmap:
   data: "version: 1.18.0"
   
